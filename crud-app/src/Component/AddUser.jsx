@@ -2,6 +2,8 @@ import react, { useState } from 'react';
 import { FormGroup, FormControl, InputLabel, Input, Button, makeStyles, Typography } from '@material-ui/core';
 import { addUser } from '../Service/api';
 import { useHistory } from 'react-router-dom';
+// import axios from 'axios';
+
 
 const initialValue = {
     name: '',
@@ -21,6 +23,9 @@ const useStyles = makeStyles({
 })
 
 const AddUser = () => {
+    
+    // const usersUrl = 'http://localhost:8080/users';
+
     const [user, setUser] = useState(initialValue);
     const { name, username, email, phone } = user;
     const classes = useStyles();
@@ -32,6 +37,7 @@ const AddUser = () => {
     }
 
     const addUserDetails = async() => {
+        // await axios.post(`${usersUrl}/add`, user);
         await addUser(user);
         history.push('./all');
     }
